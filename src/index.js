@@ -34,10 +34,12 @@ function onSearch(e) {
 
 
 const countryShow = countries => {
-  if (countries.length > 10) { toManyMatches() };
-  if (countries.status === 404) { countryNotFound() };
-  if (countries.length > 1 && countries.length < 10) { refs.cotainer.innerHTML = listHbs(countries) };
-  if (countries.length === 1) { refs.cotainer.innerHTML = countryHbs(countries) };
+  if (countries !== ' ' && countries !== '  ') {
+    if (countries.length > 10) { toManyMatches() };
+    if (countries.status === 404) { countryNotFound() };
+    if (countries.length > 1 && countries.length < 10) { refs.cotainer.innerHTML = listHbs(countries) };
+    if (countries.length === 1) { refs.cotainer.innerHTML = countryHbs(countries) };
+  }
 
 }
 
