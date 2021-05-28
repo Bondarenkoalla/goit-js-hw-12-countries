@@ -29,21 +29,24 @@ refs.searchInput.addEventListener('input', debounce(onSearch, 500));
 function onSearch(e) {  
   const searchQuery = e.target.value;
   refs.cotainer.innerHTML = ' ';
-  if (searchQuery.length < 1)
-    return;
+  if (searchQuery.length < 1) {
+    return
+  };
+  if (searchQuery === " "|| searchQuery === "  "||searchQuery === "   ") { return };
   fetchCountries(searchQuery)
     .then(countryShow);    ;
 }
 
 
 const countryShow = countries => {
-
+  
   
     if (countries.length === 0) { countryNotFound() };
     if (countries.length > 10) { toManyMatches() };
     if (countries.status === 404) { countryNotFound() };
     if (countries.length > 1 && countries.length < 10) { refs.cotainer.innerHTML = listHbs(countries) };
     if (countries.length === 1) { refs.cotainer.innerHTML = countryHbs(countries) };
+  
   
   
 }
