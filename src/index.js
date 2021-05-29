@@ -27,12 +27,12 @@ function countryNotFound() {
 refs.searchInput.addEventListener('input', debounce(onSearch, 500));
 
 function onSearch(e) {  
-  const searchQuery = e.target.value;
+  const searchQuery = e.target.value.trim();
   refs.cotainer.innerHTML = ' ';
   if (searchQuery.length < 1) {
     return
   };
-  if (searchQuery === " "|| searchQuery === "  "||searchQuery === "   ") { return };
+  // if (searchQuery === " "|| searchQuery === "  "||searchQuery === "   ") { return };
   fetchCountries(searchQuery)
     .then(countryShow);    ;
 }
